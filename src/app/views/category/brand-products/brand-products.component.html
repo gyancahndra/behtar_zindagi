@@ -1,0 +1,84 @@
+<div class="section pt-0 andro_fresh-arrivals category-section">
+    <div class="container-fluid mt-2">
+        <div class="section-title flex-title pb-0">
+            <h4 class="title float-left">Brand Products </h4>
+            <nav aria-label="breadcrumb" class="float-right">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:;" [routerLink]="['/']">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Products</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="container-fluid mt-6" style="padding: 0 20px;">
+        <div class="products-wrapper mt-4">
+            <div class="row">
+                <!-- <div class="col-md-3 pl-0 box">
+                    <div class="filter">
+                        <h5>Filter</h5>
+                        <div *ngIf="filterWrapper">
+                            <div class="form-check" *ngFor="let item of filterData">
+                                <h6>{{item?.KGP_CategoryName}}</h6>
+                                <div class="checkbox-wrapper" *ngFor="let data of item.KGPSubCategory">
+                                    <input class="form-check-input" type="checkbox" [value]="data.KGP_SubCategoryId"
+                                        [id]="data.KGP_SubCategoryId">
+                                    <label class="form-check-label" [for]="data.KGP_SubCategoryId">
+                                        {{data?.KGP_SubCategoryName}}
+                                    </label>
+                                </div>
+    
+                            </div>
+                        </div>
+                        <div class="text-center" *ngIf="!filterWrapper">
+                            Filters not found
+                        </div>
+                        
+
+                    </div>
+
+                </div> -->
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6" *ngFor="let item of brandsProduct">
+                            <div
+                                class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons">
+                                <div class="andro_product-thumb">
+                                    <a href="javascript:;" (click)="goToProdcutDetail(item)"><img
+                                            src="{{item?.ImagePath}}" alt="product"></a>
+                                </div>
+                                <div class="andro_product-badge andro_badge-sale">
+                                    {{item?.OfferDiscount}}
+                                </div>
+                                <div class="andro_product-body">
+                                    <h6 class="andro_product-title"> <a href="javascript:;"
+                                            (click)="goToProdcutDetail(item)"> {{item?.BrandName}} </a>
+                                    </h6>
+
+                                </div>
+                                <div class="andro_product-footer">
+                                    <div class="andro_product-price">
+                                        <p>
+                                            <span class="float-left">
+                                                <span class="offer-price">&#8377; {{item?.OnlinePrice}}</span>&nbsp;
+                                                <span class="main-price">&#8377; {{item?.MRP}}</span>
+                                            </span>
+                                            <span class="float-right pcs">{{item?.UnitName}}</span>
+                                        </p>
+
+
+                                    </div>
+                                    <div class="andro_product-buttons">
+                                        &nbsp;
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

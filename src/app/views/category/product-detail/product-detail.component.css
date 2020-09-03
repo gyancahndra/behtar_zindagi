@@ -1,0 +1,10 @@
+.breadcrumb{
+    background-color: transparent;
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    content: ">";
+}
+.andro_product.andro_product-minimal .andro_product-title{
+    height: auto !important;
+    text-align: left;
+}

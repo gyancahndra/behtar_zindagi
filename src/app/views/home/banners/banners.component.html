@@ -1,0 +1,21 @@
+<div class="andro_banner banner-3 bg-contain bg-norepeat banner-section">
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+        <div ngxSlickItem *ngFor="let item of bannersList" class="slide">
+            <div>
+                <!-- *ngIf="item?.IsClickable" -->
+               <a href="javascript:;" (click)="goToCategory(item?.CategoryId)"> <img src="{{ item.ImagePath }}" alt="" width="100%" *ngIf="item?.ImagePath; else defaultImg"> </a>
+                <ng-template #defaultImg>
+                    <img src="./assets/img/banner/1.jpg" width="100%">
+                </ng-template>
+            </div>
+            
+            <!-- <div *ngIf="!item?.IsClickable">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSesK3TjzjHb9OoSo_WCWxPjXgNaP-ptzx8ZOTUKfY7WZFEenQ/viewform" target="_blank">
+                        <img [src]="item?.ImagePath">
+                    </a>
+            </div> -->
+              
+              
+        </div>
+    </ngx-slick-carousel>
+</div>

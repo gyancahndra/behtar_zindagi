@@ -1,0 +1,284 @@
+<!-- category banners -->
+<div class="section pt-0">
+    <div class="container-fluid">
+        <div class="section-title flex-title">
+            <h4 class="title"> What's Selling Now
+            </h4>
+        </div>
+    </div>
+    
+    <a href="javascript:;" *ngFor="let item of promoBanners" (click)="goToCategory(item?.SubCategoryId, item?.Category)"><img class="img img-responsive mb-1" [src]="item?.Imageurl" [alt]="item?.Category" ></a>
+
+   <!-- <a href="javascript:;" (click)="goToCategory('130')"> <img src="https://behtarzindagi.in/BZ_2_Images/PromoImg/bz_fungicides_1920x400.jpg" class="img img-responsive mb-1" alt="fungicides" ></a>
+   <a href="javascript:;" (click)="goToCategory('112')"><img src="https://behtarzindagi.in/BZ_2_Images/PromoImg/bz_spray-machines_1920x400.jpg" class="img img-responsive mb-1" alt="spray-machines"></a>
+   <a href="javascript:;" (click)="goToCategory('138')"><img src="https://behtarzindagi.in/BZ_2_Images/PromoImg/bz_vegetables-seed_1920x400.jpg" class="img img-responsive" alt="vegetables-seed"></a> -->
+</div>
+
+
+<!-- Top Category picks start -->
+<div class="section pt-0 andro_fresh-arrivals" *ngIf="todaysOfferWrapper">
+    <div class="container-fluid">
+        <div class="section-title flex-title">
+            <h4 class="title">Top Selling
+                <span class="see-more">
+                    <a href="javascript:;" (click)="goToSeeMore('top-selling')">See more</a>
+                </span>
+            </h4>
+        </div>
+        <div class="slider-wrapper">
+            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+                <div ngxSlickItem *ngFor="let item of sellingProducts" class="slide top-selling">
+                    <div
+                        class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons ">
+                        <div class="andro_product-thumb">
+                            <a href="javascript:;" (click)="goToDetailPage(item?.RecordID)"><img
+                                    src="{{item?.ImagePath}}" alt="product"></a>
+                        </div>
+                        <div class="andro_product-badge andro_badge-sale">
+                            {{item?.OfferDiscount}}
+                        </div>
+                        <div class="andro_product-body">
+                            <h6 class="andro_product-title"> <a href="javascript:;"
+                                    (click)="goToDetailPage(item?.RecordID)"> {{item?.ProductName}} </a>
+                            </h6>
+                            <!-- <div class="andro_rating-wrapper">
+                            <div class="andro_rating">
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                            </div>
+                        </div> -->
+                        </div>
+                        <div class="andro_product-footer">
+                            <div class="andro_product-price">
+
+                                <p>
+                                    <span class="float-left">
+                                        <span class="offer-price">&#8377; {{item?.OnlinePrice}}</span>&nbsp;
+                                        <span class="main-price">&#8377; {{item?.MRP}}</span>
+                                    </span>
+                                    <span class="float-right pcs">{{item?.UnitName}}</span>
+                                </p>
+                            </div>
+                            <div class="andro_product-buttons">
+                                &nbsp;
+                                <!-- <a href="javascript:;" class="andro_btn-custom primary" [id]="item?.ProductID">Add To
+                                Cart</a>
+                            <a href="javascript:;" data-toggle="modal" [id]="item?.ProductID"
+                                data-target="#quickViewModal" class="andro_btn-custom light">Quick View</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ngx-slick-carousel>
+        </div>
+
+
+    </div>
+</div>
+<!-- Top Category picks end -->
+
+<!-- Get Todays offer -->
+
+<div class="section pt-0 andro_fresh-arrivals" *ngIf="!todaysOfferWrapper">
+    <div class="container-fluid">
+        <div class="section-title flex-title">
+            <h4 class="title">आज के ऑफर-सिर्फ आपके लिए
+                <span class="see-more">
+                    <a href="javascript:;" (click)="goToSeeMore('haryana-todays-offer')">See more</a>
+                </span>
+            </h4>
+        </div>
+        <div class="slider-wrapper">
+            <ngx-slick-carousel class="carousel" #slickModal2="slick-carousel" [config]="slideConfig3">
+                <div ngxSlickItem *ngFor="let item of todaysOffer" class="behtar-bachat">
+                    <div
+                        class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons ">
+                        <div class="andro_product-thumb">
+                            <a href="javascript:;" (click)="goToDetailPage(item?.RecordID)"><img
+                                    src="{{item?.ImagePath}}" alt="product"></a>
+                        </div>
+                        <div class="andro_product-badge andro_badge-sale">
+                            {{item?.OfferDiscount}}
+                        </div>
+                        <div class="andro_product-body">
+                            <h6 class="andro_product-title"> <a href="javascript:;"
+                                    (click)="goToDetailPage(item?.RecordID)"> {{item?.ProductHindiName}} </a>
+                            </h6>
+                            <!-- <div class="andro_rating-wrapper">
+                            <div class="andro_rating">
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                            </div>
+                        </div> -->
+                        </div>
+                        <div class="andro_product-footer">
+                            <div class="andro_product-price">
+                                <p>
+                                    <span class="float-left">
+                                        <span class="offer-price">&#8377; {{item?.OnlinePrice}}</span>&nbsp;
+                                        <span class="main-price">&#8377; {{item?.MRP}}</span>
+                                    </span>
+                                    <span class="float-right pcs">{{item?.UnitName}}</span>
+                                </p>
+
+
+                            </div>
+                            <div class="andro_product-buttons">
+                                &nbsp;
+                                <!-- <a href="javascript:;" class="andro_btn-custom primary" [id]="item?.ProductID">Add To
+                                Cart</a>
+                            <a href="javascript:;" data-toggle="modal" [id]="item?.ProductID"
+                                data-target="#quickViewModal" class="andro_btn-custom light">Quick View</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ngx-slick-carousel>
+        </div>
+    </div>
+</div>
+
+<!-- Call to action Start -->
+<!-- <div class="section pt-0">
+    <div class="andro_cta-notice secondary-bg pattern-bg rounded-0">
+        <div class="container">
+            <div class="andro_cta-notice-inner">
+               
+                <p class="text-white">&nbsp;</p>
+                
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- Call to action End -->
+<!-- Daily Deals Start -->
+<div class="section pt-0 andro_fresh-arrivals" *ngIf="todaysOfferWrapper">
+    <div class="container-fluid">
+        <div class="section-title flex-title">
+            <h4 class="title">Behtar Bachat
+                <span class="see-more">
+                    <a href="javascript:;" (click)="goToSeeMore('behtar-bachat')">See more</a>
+                </span>
+            </h4>
+        </div>
+        <div class="slider-wrapper">
+            <ngx-slick-carousel class="carousel" #slickModal2="slick-carousel" [config]="slideConfig2">
+                <div ngxSlickItem *ngFor="let item of behtarBachatProducts" class="behtar-bachat">
+                    <div
+                        class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons ">
+                        <div class="andro_product-thumb">
+                            <a href="javascript:;" (click)="goToDetailPage(item?.RecordID)"><img
+                                    src="{{item?.ImagePath}}" alt="product"></a>
+                        </div>
+                        <div class="andro_product-badge andro_badge-sale">
+                            {{item?.OfferDiscount}}
+                        </div>
+                        <div class="andro_product-body">
+                            <h6 class="andro_product-title"> <a href="javascript:;"
+                                    (click)="goToDetailPage(item?.RecordID)"> {{item?.ProductName}} </a>
+                            </h6>
+                            <!-- <div class="andro_rating-wrapper">
+                            <div class="andro_rating">
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                            </div>
+                        </div> -->
+                        </div>
+                        <div class="andro_product-footer">
+                            <div class="andro_product-price">
+                                <p>
+                                    <span class="float-left">
+                                        <span class="offer-price">&#8377; {{item?.OnlinePrice}}</span>&nbsp;
+                                        <span class="main-price">&#8377; {{item?.MRP}}</span>
+                                    </span>
+                                    <span class="float-right pcs">{{item?.UnitName}}</span>
+                                </p>
+
+
+                            </div>
+                            <div class="andro_product-buttons">
+                                &nbsp;
+                                <!-- <a href="javascript:;" class="andro_btn-custom primary" [id]="item?.ProductID">Add To
+                                Cart</a>
+                            <a href="javascript:;" data-toggle="modal" [id]="item?.ProductID"
+                                data-target="#quickViewModal" class="andro_btn-custom light">Quick View</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ngx-slick-carousel>
+        </div>
+    </div>
+</div>
+<!-- Daily Deals End -->
+
+<div class="section pt-0 andro_fresh-arrivals" *ngIf="!todaysOfferWrapper">
+    <div class="container-fluid">
+        <div class="section-title flex-title">
+            <h4 class="title">सर्वाधिक बिकने वाले उत्पाद
+                <span class="see-more">
+                    <a href="javascript:;" (click)="goToSeeMore('most-sellings')">See more</a>
+                </span>
+            </h4>
+        </div>
+        <div class="slider-wrapper">
+            <ngx-slick-carousel class="carousel" #slickModal2="slick-carousel" [config]="slideConfig3">
+                <div ngxSlickItem *ngFor="let item of trendProducts" class="behtar-bachat">
+                    <div
+                        class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons ">
+                        <div class="andro_product-thumb">
+                            <a href="javascript:;" (click)="goToDetailPage(item?.RecordID)"><img
+                                    src="{{item?.ImagePath}}" alt="product"></a>
+                        </div>
+                        <div class="andro_product-badge andro_badge-sale">
+                            {{item?.OfferDiscount}}
+                        </div>
+                        <div class="andro_product-body">
+                            <h6 class="andro_product-title"> <a href="javascript:;"
+                                    (click)="goToDetailPage(item?.RecordID)"> {{item?.ProductHindiName}} </a>
+                            </h6>
+                            <!-- <div class="andro_rating-wrapper">
+                            <div class="andro_rating">
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                                <i class="fa fa-star active"></i>
+                            </div>
+                        </div> -->
+                        </div>
+                        <div class="andro_product-footer">
+                            <div class="andro_product-price">
+                                <p>
+                                    <span class="float-left">
+                                        <span class="offer-price">&#8377; {{item?.OnlinePrice}}</span>&nbsp;
+                                        <span class="main-price">&#8377; {{item?.MRP}}</span>
+                                    </span>
+                                    <span class="float-right pcs">{{item?.UnitName}}</span>
+                                </p>
+
+
+                            </div>
+                            <div class="andro_product-buttons">
+                                &nbsp;
+                                <!-- <a href="javascript:;" class="andro_btn-custom primary" [id]="item?.ProductID">Add To
+                                Cart</a>
+                            <a href="javascript:;" data-toggle="modal" [id]="item?.ProductID"
+                                data-target="#quickViewModal" class="andro_btn-custom light">Quick View</a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ngx-slick-carousel>
+        </div>
+    </div>
+</div>

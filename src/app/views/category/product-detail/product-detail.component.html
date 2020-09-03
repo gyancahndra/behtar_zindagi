@@ -1,0 +1,124 @@
+
+<!-- Subheader Start -->
+<div class="container-fluid mt-2">
+    <div class="section-title flex-title pb-0">
+        <h4 class="title float-left">Product Details</h4>
+        <nav aria-label="breadcrumb" class="float-right">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:;" [routerLink]="['/']">Home</a></li>
+                <li class="breadcrumb-item"><a href="javascript:;" (click)="goToBack()">Sub Categories</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Product Details</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Subheader End -->
+<!-- Product Content Start -->
+<div class="productWrapper">
+    <div class="container">
+        <div *ngIf="productAvailability">
+            <div class="row" *ngFor="let item of productDetails">
+                <div class="col-md-5">
+                    <div class="andro_product-single-thumb">
+                        <img [src]="item?.ImageUrl" alt="product" class="">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="andro_product-single-content">
+                        <h3> {{item?.ProductName}} </h3>
+                        <div class="andro_product-price mb-0">
+                            <span>&#8377; {{item?.OnlinePrice}}</span>
+                            <span>&#8377; {{item?.MRP}}</span>
+                            <span>(OfferDiscount: <strong>{{item?.OfferDiscount}}</strong>)</span>
+                            <p class="mb-0"><strong>Quantity:</strong> &nbsp;{{item?.Quantity}}</p>
+                        </div>
+                       
+                        <p class="andro_product-excerpt mb-1" *ngFor="let data of desc">
+                            <span class="des"><strong> {{data.key}}:</strong> &nbsp;&nbsp;{{data.value}}</span>
+                        </p>
+                        <!-- <p class="mt-3">
+                            <a href="javascript:;" class="andro_btn-custom">Buy Now</a>
+                        </p> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center" *ngIf="!productAvailability">
+            No product found
+        </div>
+    </div>
+</div>
+<!-- Product Content End -->
+
+<!-- Related Products Start -->
+<div class="section pt-0 andro_related-posts">
+    <div class="container-fluid" *ngIf="globalBuyWrapper">
+        <div class="section-title flex-title">
+            <h4 class="title">Dealers Availability</h4>
+        </div>
+        <div class="" *ngIf="dealersAvailability">
+            <div class="row">
+                <div class="col-md-3 col-sm-6" *ngFor="let item of dealerDetails">
+                    <div class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons">
+
+                        <div class="andro_product-body" *ngIf="item?.IsDeliveryAvailable == 0">
+                            <h6 class="andro_product-title"> {{item?.dealerName}} </h6>
+                            <div class="andro_product-price text-left">
+                                <p class="mb-0"> <strong> &#8377; {{item?.OnlinePrice}} </strong></p>
+                                <p class="mb-0"><strong>Quantity:</strong> {{item?.Quantity}}</p>
+                                <p class="mb-0"><strong>Distance:</strong> {{item?.DistanceFromBuyer}} KM.</p>
+                                <p class="mb-0"><strong>Address:</strong> {{item?.address}}</p>
+                                <button type="button" class="btn btn-success mt-2" (click)="openModal(item)">Get Best Deal</button>
+                            </div>
+                           
+                            <!-- <div class="andro_product-price">
+                                <p class="mb-0">
+                                    <span *ngIf="item?.IsDeliveryAvailable == 0">
+                                        {{item?.dealerName}} <br/> {{item?.address}} <br/> {{item?.Quantity}} <br/> Rs. {{item?.OnlinePrice}} <br/>
+                                        <button type="button" class="btn btn-success" (click)="openModal(item)">Get Best Deal</button>
+                                    </span>
+                                    <span *ngIf="item?.IsDeliveryAvailable == 1">
+                                        <button type="button" class="btn btn-warning">Buy Now</button>
+                                    </span>
+                                    <span *ngIf="item?.IsDeliveryAvailable == 2">
+                                        {{item?.dealerName}}
+                                        <button type="button" class="btn btn-success">Buy Now</button>
+                                    </span>
+                                </p>
+                            </div> -->
+                        </div>
+                        <div class="andro_product-body" *ngIf="item?.IsDeliveryAvailable == 1">
+                            <button type="button" class="btn btn-success mt-2" (click)="globalBuyBtn()">Buy Now</button>
+                        </div>
+                        <div class="andro_product-body" *ngIf="item?.IsDeliveryAvailable == 2">
+                            <h6 class="andro_product-title"> {{item?.dealerName}} </h6>
+                            <div class="andro_product-price text-left">
+                                <button type="button" class="btn btn-success mt-2" (click)="globalBuyBtn()">Buy Now</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="text-center" *ngIf="!dealersAvailability">
+            {{dealersMessage}}
+        </div>
+    </div>
+    <div class="container-fluid" *ngIf="!globalBuyWrapper">
+        <div class="text-center">
+            <button type="button" class="btn btn-primary btn-lg" (click)="globalBuyBtn()">Buy Now</button>
+        </div>
+    </div>
+
+    <div class="container-fluid" *ngIf="haryanaBuyNowWrapper">
+        <div class="text-center">
+            <button type="button" class="btn btn-primary btn-lg" (click)="globalBuyBtn()">Buy Now</button>
+        </div>
+    </div>
+</div>
+<!-- Related Products End -->

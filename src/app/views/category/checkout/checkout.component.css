@@ -1,0 +1,10 @@
+.andro_product-single-thumb img{
+    height: 200px;
+}
+
+.breadcrumb{
+    background-color: transparent;
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    content: ">";
+}

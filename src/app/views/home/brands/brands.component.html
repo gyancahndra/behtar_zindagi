@@ -1,0 +1,18 @@
+<div class="section pt-0 andro_other-mentions">
+    <div class="container-fluid">
+        <div class="section-title flex-title">
+            <h4 class="title">Brands</h4>
+        </div>
+        <div class="slider-wrapper">
+            <ngx-slick-carousel class="carousel" #slickModal2="slick-carousel" [config]="slideConfig2">
+                <div ngxSlickItem *ngFor="let item of topBrands" class="behtar-bachat">
+                    <div class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons ">
+                    <div class="andro_product-thumb">
+                        <a href='javascript:;' [id]="item?.BrandID" (click)="goToBrandsProduct(item?.BrandID)"><img src="{{item?.ImageUrl}}" alt="product"></a>
+                    </div>
+                </div>
+                </div>
+            </ngx-slick-carousel>
+        </div>
+    </div>
+</div>

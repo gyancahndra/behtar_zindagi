@@ -1,0 +1,334 @@
+<!-- Aside (Right Panel) -->
+<div class="andro_aside-overlay aside-trigger-right"></div>
+<!-- Aside (Mobile Navigation) -->
+<aside class="andro_aside" *ngIf="categoryWrapperMobile">
+    <a href="javascript:;" class="mt-2 mr-3 float-right" (click)="categoryMobile()">x</a>
+    <a class="" href="javascript:;" (click)="gotoHomePage()"> <img class="img-responsive"
+            src="assets/img/BZ_logo_normal.png" alt="logo"
+            style="width: 100%;padding:10px;margin:0 auto;display: block;">
+    </a>
+    <ul *ngIf="farmerCategoryList?.length">
+        <li class="menu-item menu-item-has-children" *ngFor="let item of farmerCategoryList">
+            <a href="javascript:void(0)"
+                (click)="goToSubcategory(item?.CategoryId, item?.isKGP_Category)">{{item?.Categoryname}}</a>
+        </li>
+    </ul>
+</aside>
+<div class="andro_aside-overlay aside-trigger-left"></div>
+<!-- Header Start -->
+<header class="andro_header header-3 can-sticky">
+    <!-- Topheader Start -->
+    <div class="andro_header-top">
+        <div class="container-fluid">
+            <div class="andro_header-top-inner">
+                <ul class="andro_header-top-sm andro_sm">
+                    <li> <a href="javascript:;"><i class="fab fa-whatsapp"
+                                style="color: lightgreen; font-size:20px;"></i>&nbsp; <strong>7876400500</strong> </a>
+                    </li>
+                    <!-- <li> <a href="#"> <i class="fab fa-twitter"></i> </a> </li> -->
+
+                </ul>
+                <ul class="andro_header-top-links">
+                    <!-- <div class="float-right">
+                        <ul class="navbar-nav">
+                            <li class="menu-item menu-item-has-children">
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLScdL9Cc4ZNE3oQutmaLiviCQJ6bBLtQOX1UqXvF62jdgc3heg/viewform"
+                                    target="_blank" style="color: #fff;">Become a Seller</a>
+                            </li>
+                        </ul>
+                    </div> -->
+                    <li class="menu-item menu-item-has-children">
+                        <a href="javascript:;" (click)="locationModal()"> <span class="">
+                                {{districtName}}&nbsp;{{stateName}}&nbsp;&nbsp;&nbsp;
+                                <i class="fa fa-map-marker font-20" aria-hidden="true"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menu-item menu-item-has-children mt-1 mb-1">
+                        <!-- <a class="btn btn-success seller"
+                            href="https://docs.google.com/forms/d/e/1FAIpQLScdL9Cc4ZNE3oQutmaLiviCQJ6bBLtQOX1UqXvF62jdgc3heg/viewform"
+                            target="_blank" style="color: #fff;">Become a Seller</a> -->
+                            <a class="btn btn-success seller"
+                            href="https://behtarzindagi.in/Testingsite/Become-A-Seller.Html"
+                            target="_blank" style="color: #fff;">Become a Seller</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- Topheader End -->
+    <!-- Middle Header Start -->
+    <div class="andro_header-middle">
+        <div class="container-fluid">
+            <nav class="navbar">
+                <!-- Logo -->
+                <div class="float-left">
+                    <a class="navbar-brand" routerLink='/'> <img class="float-left mr-2"
+                            src="assets/img/BZ_logo_normal.png" alt="logo">
+
+                    </a>
+                </div>
+
+                <!-- Search Form -->
+                <!-- <div class="andro_search-adv">
+                    <form method="post">
+                        <div class="andro_search-adv-cats">
+                            <span>All Categories</span>
+                            <div class="sub-menu">
+                                <div class="andro_dropdown-scroll" *ngIf="farmerCategoryList?.length">
+                                    <label *ngFor="let item of farmerCategoryList">
+                                        <input type="checkbox">
+                                        {{item.Categoryname}}
+                                        <i class="fas fa-check"></i>
+                                    </label>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="andro_search-adv-input">
+                            <input type="text" class="form-control" placeholder="Look for Fruits, Vegetables"
+                                name="search" value="">
+                            <button type="submit" name="button"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
+                </div> -->
+
+                <div class="andro_header-controls">
+                    <ul class="andro_header-controls-inner">
+                        <!-- <li class="andro_header-cart" *ngIf="!loginStatus">
+                            <a href="javascript:;" (click)="goToNotification()">
+                                <i class="fa fa-bell" aria-hidden="true" style="font-size: 20px;"></i>
+                            </a>
+                        </li> -->
+                        <li class="andro_header-cart mr-3" *ngIf="!loginStatus">
+                            {{farmerName}}
+                        </li>
+                        <li class="andro_header-cart">
+                            <a href="javascript:;" (click)="loginWrapper()" *ngIf="loginStatus" style="min-width: 65px;">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <div class="andro_header-cart-content">
+                                    <span>Login</span>
+                                </div>
+                            </a>
+                           
+                            <a href="javascript:;" (click)="signOut()" *ngIf="!loginStatus"  style="min-width: 65px;">
+                                <div class="">
+                                    <span>Sign out</span>
+                                </div>
+                            </a>
+                        </li>
+
+                        
+
+                        <!-- <li class="andro_header-cart">
+                            <a routerLink='/cart' title="Your Cart">
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <div class="andro_header-cart-content">
+                                    <span>9 Items</span>
+
+                                </div>
+                            </a>
+                        </li> -->
+                    </ul>
+                    
+                    <!-- Toggler -->
+                    <div class="aside-toggler" (click)="categoryMobile()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Middle Header End -->
+    <!-- Bottom Header Start -->
+    <div class="andro_header-bottom">
+        <div class="container-fluid">
+            <div class="andro_header-bottom-inner">
+                <div class="andro_category-mm open">
+                    <div class="andro_category-mm-header" (click)="category()">
+                        <h6> <i class="fas fa-th-large"></i> Categories</h6>
+                    </div>
+                    <div class="andro_category-mm-body" *ngIf="categoryWrapper">
+                        <ul *ngIf="farmerCategoryList?.length">
+                            <li class="andro_category-mm-item" *ngFor="let item of farmerCategoryList"> <a
+                                    href="javascript:;"
+                                    (click)="goToSubcategory(item?.CategoryId, item?.isKGP_Category)">
+                                    {{item?.Categoryname}}</a> </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Menu -->
+                <!-- <div class="float-right">
+                    <ul class="navbar-nav">
+                        <li class="menu-item menu-item-has-children">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLScdL9Cc4ZNE3oQutmaLiviCQJ6bBLtQOX1UqXvF62jdgc3heg/viewform"
+                                target="_blank" style="color: #fff;">Become a Seller</a>
+                        </li>
+                    </ul>
+                </div> -->
+
+                <!-- Side navigation toggle -->
+                <!-- <div class="aside-toggler aside-trigger-right desktop-toggler">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- Bottom Header End -->
+
+</header>
+<div *ngIf="!router.url.includes('bz/')">
+    <app-banners></app-banners>
+
+    <div class="section pt-0 andro_fresh-arrivals category-section">
+        <div class="container-fluid" style="padding: 0 20px;">
+            <div class="slider-wrapper" *ngIf="farmerCategoryList?.length">
+                <ngx-slick-carousel class="carousel" #slickModal2="slick-carousel" [config]="slideConfig2">
+                    <div ngxSlickItem *ngFor="let item of farmerCategoryList" class="category-wrapper"
+                        [ngClass]="item.Categoryname">
+                        <div class="category-box">
+                            <a href="javascript:;" (click)="goToSubcategory(item?.CategoryId, item?.isKGP_Category)">
+                                <img [src]="item.ImageUrl ? item.ImageUrl : './assets/img/cattle_feed.svg'" alt=""
+                                    width="50%" class="img img-responsive category-img" style="margin: 0 auto;">
+                                <p class="text">{{item.Categoryname}}</p>
+                            </a>
+                        </div>
+
+                    </div>
+                </ngx-slick-carousel>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Header End -->
+
+<!-- Modal starts -->
+
+<!-- location set modal -->
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h5 class="modal-title">Select your location</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" *ngIf="closeIcon">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form [formGroup]="locationForm" (ngSubmit)="onSubmit()">
+                    <div class="locationForm mt-3">
+                        <div class="form-group">
+                            <label>State <span class="text-danger">*</span></label>
+                            <select class="form-control" formControlName="state"
+                                (change)="addState($event.target.value)" required>
+                                <option *ngFor="let item of stateList" [value]="item.Id + ' ' + item.Name">{{item.Name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>District&nbsp;<span class="text-danger">*</span></label>
+                            <select class="form-control" formControlName="district"
+                                (change)="addDistrict($event.target.value)" required>
+                                <option *ngFor="let item of districtList" [value]="item.Id + ' ' + item.Name">
+                                    {{item.Name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" [disabled]="locationForm.invalid"
+                                class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- login set modal -->
+<div id="myModal2" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div *ngIf="loginWrapperBox">
+                    <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+                        <div class="locationForm mt-3">
+                            <div class="row">
+                                <!-- <div class="col-md-5">
+                                        <button class="loginBtn loginBtn--facebook"><i class="fab fa-facebook-f"></i> Login with Facebook</button>
+                                        <button class="loginBtn loginBtn--google"><i class="fab fa-google"></i> Login with Google</button>
+                                </div>
+                                <div class="col-md-1">
+                                    <p class="pt-5">Or</p>
+                                </div> -->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Full Name</label>
+                                        <input class="form-control custom-input-field" placeholder="Enter full name"
+                                            formControlName="full_name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mobile No.</label>
+                                        <input class="form-control custom-input-field" maxlength="10"
+                                            placeholder="Phone Number" formControlName="mob"
+                                            (keypress)="keyPressEvent($event)">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" [disabled]="loginForm.invalid"
+                                            class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div *ngIf="!loginWrapperBox">
+                    <a href="javascript:;" class="go-back grey" (click)="goBack()"><i class="fas fa-arrow-left"
+                            aria-hidden="true"></i></a>
+                    <div class="text-center">
+                        <h6 class="mb-0">Please enter the OTP to verify your account</h6>
+                        <p class="grey">A one time password has been sent to <span
+                                class="font-weight-bold">{{mobileNo}}</span></p>
+                    </div>
+
+                    <div class="form-wrapper">
+                        <form [formGroup]="verifyOtpForm" novalidate (ngSubmit)="onVerifyOtp()">
+                            <div class="form-group col-md-6 col-sm-6" style="margin: 0 auto 20px;">
+                                <label>Enter OTP</label>
+                                <input class="form-control custom-input-field" maxlength="10" placeholder="Enter OTP"
+                                    formControlName="otp" (keypress)="keyPressEvent($event)">
+                            </div>
+
+
+                            <div class="text-center">
+                                <button type="submit" [disabled]="verifyOtpForm.invalid"
+                                    class="btn btn-secondary next-submit">Verify OTP</button>
+                                <div>
+                                    <a href="javascript:;" (click)="resendOneTimePassword()" class="grey" [class.active]="resendOtp">Resend
+                                        One-Time Password</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

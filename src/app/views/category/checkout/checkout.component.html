@@ -1,0 +1,56 @@
+
+<!-- Subheader Start -->
+<div class="container-fluid mt-2">
+    <div class="section-title flex-title pb-0">
+        <h4 class="title float-left">Checkout</h4>
+        <nav aria-label="breadcrumb" class="float-right">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:;" [routerLink]="['/']">Home</a></li>
+                <li class="breadcrumb-item"><a href="javascript:;" (click)="goToBack()">Product Details</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Checkout page</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- Subheader End -->
+<!-- Product Content Start -->
+<div class="productWrapper">
+    <div class="container">
+        <div>
+            <div class="row" *ngFor="let item of productDetails">
+                <div class="col-md-3">
+                    <div class="andro_product-single-thumb">
+                        <img [src]="item?.ImageUrl" alt="{{item?.ProductName}}" class="">
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="andro_product-single-content">
+                        <h3> {{item?.ProductName}} </h3>
+                        <div class="andro_product-price mb-0">
+                            <!-- <span>&#8377; {{item?.OnlinePrice}}</span> -->
+                            <p><strong>Quantity:</strong> &nbsp; {{totalQuantity}}
+                                <select class="form-control col-sm-2" (change)="selectedValue($event.target.value)">
+                                    <option *ngFor="let item of quantity" [value]="item" >
+                                        {{item}}
+                                    </option>
+                                </select>
+                            </p>
+                            <p>
+                                <strong>Total Price:</strong>&nbsp; &#8377; {{totalAmount}} 
+                            </p>
+                            <div>
+                               
+                                <strong>Address: </strong> <input type="text" class="form-control col-md-9" placeholder="Enter full address" [(ngModel)]="addressValue">
+                            </div>
+                            <p>
+                                <button type="button" class="btn btn-primary mt-2" (click)="checkout()">Buy</button>
+                            </p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product Content End -->
